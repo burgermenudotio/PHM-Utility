@@ -1,7 +1,7 @@
-Get-ChildItem -Path "$PSScriptRoot\functions\" -Filter *.ps1 -Recurse |
-ForEach-Object
+$functions = @(Get-ChildItem -Path $PSScriptRoot\functions\*.ps1 -ErrorAction SilentlyContinue)
+ForEach($function in $functions)
 {
-    . $_.FullName
+    . $function.FullName
 }
 
-Export-ModuleMember -Function *-*
+Export-ModuleMember -Function *
