@@ -1,4 +1,27 @@
 function New-StrongPassword {
+
+    <#
+    .SYNOPSIS
+        Generates a strong password.
+    .DESCRIPTION
+        Generates a strong password that includes uppercase, lowercase, numeric and special characters.
+        Accepts an integer as password length argument. Use ExcludeSpecialCharacters switch
+        to generate an exclusively alphanumeric password.
+    .PARAMETER PasswordLength
+        Accepts an integer as password length. Password length can be a minimum of 8 and maximum of 128. Default is 16.
+    .PARAMETER ExcludeSpecialCharacters
+        Switch to generate an exclusively alphanumeric password.
+    .EXAMPLE
+        New-StrongPassword
+
+        pg,U+7JQ2Xx3;*t!
+
+        New-StrongPassword -PasswordLength 24 -ExcludeSpecialCharacters
+
+        pdMq4t226OnkITpvx1KLewFI
+    #>
+
+
     [CmdletBinding()]
     param (
         # Password Length as integer
