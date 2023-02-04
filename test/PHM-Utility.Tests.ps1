@@ -1,11 +1,11 @@
-$ModuleName = 'PHM-Utility'
-$ModuleManifestName = "$ModuleName.psd1"
-$ModuleManifestPath = "$PSScriptRoot\..\$ModuleManifestName"
+BeforeAll{
+    $ModuleName = 'PHM-Utility'
+}
 
 Describe 'Module Manifest Tests' {
     It 'Passes Test-ModuleManifest' {
-        Test-ModuleManifest -Path $ModuleManifestPath | Should Not BeNullOrEmpty
-        $? | Should Be $true
+        $ModuleManifestName = "$ModuleName.psd1"
+        Test-ModuleManifest -Path $ModuleManifestName | Should -Not -BeNullOrEmpty
+        $? | Should -Be $true
     }
 }
-
