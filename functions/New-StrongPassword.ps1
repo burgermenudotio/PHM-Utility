@@ -5,8 +5,6 @@ function New-StrongPassword {
         Generates a strong password.
     .DESCRIPTION
         Generates a strong password that includes uppercase, lowercase, numeric and special characters.
-        Accepts an integer as password length argument. Use ExcludeSpecialCharacters switch
-        to generate an exclusively alphanumeric password.
     .PARAMETER PasswordLength
         Accepts an integer as password length. Password length can be a minimum of 8 and maximum of 128. Default is 16.
     .PARAMETER ExcludeSpecialCharacters
