@@ -21,7 +21,6 @@ function New-StrongPassword {
         pdMq4t226OnkITpvx1KLewFI
     #>
 
-
     [CmdletBinding()]
     param (
         # Password Length as integer
@@ -36,16 +35,29 @@ function New-StrongPassword {
     )
 
     $availableCharacters = 48..57 + 65..90 + 97..122
+    [regex]$validationRegex = '((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).+)'
 
     if(-not $ExcludeSpecialCharacters){
         $availableCharacters += 33..47 + 58..64 + 126
+        [regex]$validationRegex = '((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).+)'
     }
 
-    $password = ""
+    do {
 
-    for ($i = 0; $i -lt $PasswordLength; $i++) {
+        $password = ""
+
+        for ($i = 0; $i -lt $PasswordLength; $i++) {
+
         $password += [char](Get-Random $availableCharacters)
-    }
+
+        }
+
+    } until (
+
+        $validationRegex.IsMatch(($password))
+
+    )
 
     $password
+
 }
